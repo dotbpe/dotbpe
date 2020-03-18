@@ -84,7 +84,7 @@ namespace Tomato.Extra
 
                 if (!(actor is TService realService))
                 {
-                    throw new InvalidOperationException($"{serviceType.FullName} has no implementation class,should it be configured at remote server");
+                    throw new InvalidOperationException($"{serviceType.FullName} has no implementation class,it should  be deployed on a remote server");
                 }
                 proxy = this._generator.CreateInterfaceProxyWithTarget(realService, LocalInvokeInterceptor);
                 TYPE_CACHE.TryAdd(cacheKey,proxy);

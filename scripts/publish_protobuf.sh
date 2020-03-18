@@ -12,6 +12,6 @@ mkdir -p $artifactsFolder
 
 dotnet build ./src/Tomato.Extra.Protobuf/Tomato.Extra.Protobuf.csproj -c Release
 
-dotnet pack ./src/Tomato.Extra.Protobuf/Tomato.Extra.Protobuf.csproj -c Release -o ../../$artifactsFolder
+dotnet pack ./src/Tomato.Extra.Protobuf/Tomato.Extra.Protobuf.csproj -c Release -o $artifactsFolder
 
 dotnet nuget push ./$artifactsFolder/Tomato.Extra.Protobuf.*.nupkg -k $NUGET_KEY -s https://www.nuget.org

@@ -41,7 +41,7 @@ namespace MathService
             builder.RunConsoleAsync().Wait();
 
 
-            /*
+            /**
              * Consul Service Registration
              *
              var builder = new HostBuilder()

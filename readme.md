@@ -50,6 +50,6 @@ Tomato RPC 支持两种开发模式，一种类似于Dubbo的定义接口的方�
     * 4 = InvokeWithoutResponse 调用不关心返回值
 + serId = serviceId  服务号
 + msgId = msgId 消息ID
-+ code = 当 type = 0 （请求时）固定传0 ，其他即为响应码，如果响应码不为0 则认为请求失败，具体错误码再定义
++ code = 当 type = 1 （请求时）固定传0 ，其他即为响应码，如果响应码不为0 则认为请求失败，具体错误码再定义
 + codecType = 编码方式 0=默认 Protobuf 1=MessagePack 2=JSON
 + data = 实际的业务数据

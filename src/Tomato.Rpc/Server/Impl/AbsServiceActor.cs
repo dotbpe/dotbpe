@@ -62,7 +62,7 @@ namespace Tomato.Rpc.Server
             catch (Exception ex)
             {
                 Logger.LogError(ex, "Receive message occ error ,messageId={messageId}", message.Id);
-                rsp = await SendErrorResponseAsync(context, message);
+                rsp = await SendErrorResponseAsync(context, message).ConfigureAwait(false);
                 TomatoDiagnosticListenerExtensions.Listener.ServiceActorException(context, message, ex);
             }
             finally
@@ -93,7 +93,7 @@ namespace Tomato.Rpc.Server
             rsp.Code = RpcErrorCodes.CODE_INTERNAL_ERROR; //内部错误
             try
             {
-                await context.SendAsync(rsp);
+                await context.SendAsync(rsp).ConfigureAwait(false);
             }
             catch (Exception ex)
             {

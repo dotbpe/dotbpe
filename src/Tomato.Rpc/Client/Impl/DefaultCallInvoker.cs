@@ -67,7 +67,7 @@ namespace Tomato.Rpc.Client
             if (request.InvokeMessageType == InvokeMessageType.InvokeWithoutResponse)
             {
                 await SendAsync(request);
-                var rsp = AmpMessage.CreateRequestMessage(request.ServiceId, request.MessageId);
+                var rsp = AmpMessage.CreateResponseMessage(request.ServiceId, request.MessageId);
                 TomatoDiagnosticListenerExtensions.Listener.ClientReceiveResponse(request, rsp);
                 return rsp;
             }

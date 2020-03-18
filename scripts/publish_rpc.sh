@@ -12,6 +12,6 @@ mkdir -p $artifactsFolder
 
 dotnet build ./src/Tomato.Rpc/Tomato.Rpc.csproj -c Release
 
-dotnet pack ./src/Tomato.Rpc/Tomato.Rpc.csproj -c Release -o ../../$artifactsFolder
+dotnet pack ./src/Tomato.Rpc/Tomato.Rpc.csproj -c Release -o $artifactsFolder
 
 dotnet nuget push ./$artifactsFolder/Tomato.Rpc.*.nupkg -k $NUGET_KEY -s https://www.nuget.org

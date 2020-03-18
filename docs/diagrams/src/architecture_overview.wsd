@@ -1,10 +1,6 @@
 @startuml overview
 
-title DotBPE主要调用流程
-legend
-    DotBPE主要调用流程
-end legend
-
+title Tomato主要调用流程
 
 
 autonumber

@@ -16,7 +16,7 @@ namespace Tomato.Rpc.Tests.Client
             var factory = ClientProxyFactory.Create(container);
 
 
-            factory.AddDependencyServices(services => { services.AddSingleton<IFooService, FooService>(); });
+            factory.AddDependencyServices(services => services.AddSingleton<IFooService, FooService>());
 
 
             var provider = container.BuildServiceProvider();

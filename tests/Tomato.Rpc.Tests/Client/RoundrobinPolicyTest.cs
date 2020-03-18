@@ -12,12 +12,12 @@ namespace Tomato.Rpc.Tests.Client
         [Fact]
         public void Test1()
         {
-            RoundrobinPolicy p = new RoundrobinPolicy();
+            var p = new RoundrobinPolicy();
 
-            List<IRouterPoint> listRouters = new List<IRouterPoint>
+            var listRouters = new List<IRouterPoint>
             {
-                new RouterPoint(){ Weight =1},
-                new RouterPoint(){ Weight =2}
+                new RouterPoint { Weight =1},
+                new RouterPoint { Weight =2}
             };
 
             for(var i =0; i< 100000; i++)

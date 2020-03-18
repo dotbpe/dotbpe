@@ -86,7 +86,7 @@ namespace Tomato.Rpc.Protocol
 
         public static AmpMessage CreateRequestMessage(int serviceId,ushort messageId,bool withOutResponse =false)
         {
-            AmpMessage msg = new AmpMessage
+            return new AmpMessage
             {
                 ServiceId = serviceId,
                 MessageId = messageId,
@@ -95,14 +95,13 @@ namespace Tomato.Rpc.Protocol
                 InvokeMessageType =
                     withOutResponse ? InvokeMessageType.InvokeWithoutResponse : InvokeMessageType.Request
             };
-            return msg;
         }
 
 
         public static AmpMessage CreateResponseMessage(string requestId)
         {
             var data = requestId.Split('|');
-            AmpMessage message = new AmpMessage
+            return new AmpMessage
             {
                 ServiceId = int.Parse(data[0]),
                 MessageId = ushort.Parse(data[1]),
@@ -110,12 +109,11 @@ namespace Tomato.Rpc.Protocol
                 CodecType = 0,
                 InvokeMessageType = InvokeMessageType.Response
             };
-            return message;
         }
 
         public static AmpMessage CreateResponseMessage(int serviceId, ushort messageId)
         {
-            AmpMessage message = new AmpMessage
+            return new AmpMessage
             {
                 ServiceId = serviceId,
                 MessageId = messageId,
@@ -123,7 +121,6 @@ namespace Tomato.Rpc.Protocol
                 CodecType = 0,
                 InvokeMessageType = InvokeMessageType.Response
             };
-            return message;
         }
     }
 }

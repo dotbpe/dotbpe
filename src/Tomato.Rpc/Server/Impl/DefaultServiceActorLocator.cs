@@ -33,10 +33,8 @@ namespace Tomato.Rpc.Server
             if (HeartbeatActor.Id.Equals(servicePath)) return HeartbeatActor;
 
             var path = servicePath.Split('.');
-
-            var serviceId = string.Empty;
-            var messageId = string.Empty;
-
+            string serviceId;
+            string messageId;
             if (path.Length == 2)
             {
                 serviceId = path[0];

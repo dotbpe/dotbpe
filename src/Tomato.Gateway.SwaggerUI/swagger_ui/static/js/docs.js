@@ -98,15 +98,21 @@ $(function () {
  */
 function renderRefModel(domId, jsonData, modelName) {
     if (modelName) {
+      
         var model = jsonData.definitions[modelName];
+        if (!model) {
+            return;
+        }
         model.name = modelName;
         model.domId = domId;
         //修改有嵌套对象的type
-        $.each(model.properties, function (i, v) {
+        $.each(model.properties, function (i, v) {           
             if (v.items) {
                 $.each(v.items, function (j, item) {
+
                     var typeModel = item.startsWith("#") ? getRefName(item) : item;
                     model.properties[i].type = "Array[" + typeModel + "]";
+                   
                 });
             }
 

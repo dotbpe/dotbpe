@@ -8,7 +8,7 @@
 		<ExtraMessagePackPackageVersion>1.1.0</ExtraMessagePackPackageVersion>
 		<ExtraProtobufPackageVersion>1.1.0</ExtraProtobufPackageVersion>
 		<GatewayPackageVersion>2.1.0</GatewayPackageVersion>
-		<GatewaySwaggerPackageVersion>1.1.0</GatewaySwaggerPackageVersion>
-		<GatewaySwaggerUIPackageVersion>1.1.0</GatewaySwaggerUIPackageVersion>
+		<GatewaySwaggerPackageVersion>1.1.1</GatewaySwaggerPackageVersion>
+		<GatewaySwaggerUIPackageVersion>1.1.1</GatewaySwaggerUIPackageVersion>
 	</PropertyGroup>
 </Project>
