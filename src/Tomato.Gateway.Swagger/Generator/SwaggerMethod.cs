@@ -32,6 +32,9 @@ namespace Tomato.Gateway.Swagger.Generator
         [DataMember(Name = "responses")]
         public Dictionary<string,SwaggerApiResponse> Responses { get; set; }
 
+        [DataMember(Name = "version")]
+        public string Version { get; set; }
+
     }
 
 

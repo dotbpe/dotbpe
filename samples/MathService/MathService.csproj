@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.2</TargetFramework>	
+    <TargetFramework>netcoreapp2.2</TargetFramework>
 	<RuntimeIdentifiers>win10-x64;centos.7-x64</RuntimeIdentifiers>
 	<ThreadPoolMinThreads>100</ThreadPoolMinThreads>
 	<ThreadPoolMaxThreads>100</ThreadPoolMaxThreads>

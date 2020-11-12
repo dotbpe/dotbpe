@@ -6,19 +6,22 @@ namespace Tomato.Gateway
     public class RouterAttribute:Attribute
     {
 
-        public RouterAttribute(string path,RestfulVerb acceptVerb= RestfulVerb.Any)
-        {
-            Path = path;
-            AcceptVerb = acceptVerb;
-        }
+      public RouterAttribute(string path,RestfulVerb acceptVerb= RestfulVerb.Any,string version ="1.0.0")
+              {
+                  Path = path;
+                  AcceptVerb = acceptVerb;
+                  Version = version;
+              }
 
 
-        public string Category { get; set; } = "default";
-        public string Path { get; }
+              public string Category { get; set; } = "default";
+              public string Path { get; }
 
-        public RestfulVerb AcceptVerb { get;  }
+              public string Version { get; } = "1.0.0";
 
-        public string PluginName { get; set; }
+              public RestfulVerb AcceptVerb { get;  }
+
+              public string PluginName { get; set; }
 
 
         private Type _PluginType;

@@ -32,7 +32,7 @@ namespace GreeterHttpService
         /// <param name="timeout"></param>
         /// <returns></returns>
         [RpcMethod(2)]
-        [Router("/api/sample/postSample", RestfulVerb.Post)]
+        [Router("/api/sample/postSample", RestfulVerb.Post, "2.0.0")]
         Task<RpcResult<SampleRes>> PostSampleAsync(SampleReq req, int timeout = 3000);
 
     }

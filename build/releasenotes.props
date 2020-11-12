@@ -26,13 +26,13 @@
         1. 实现Google Protobuf的协议编码实现
         </ExtraProtobufPackageNotes>
         <GatewayPackageNotes>
-        1. 修复returnMessage中包含特殊符号的问题，但是并不完美
+        1. 优化Swagger文档生成：支持地址跳转，支持特定版本号高亮
         </GatewayPackageNotes>
         <GatewaySwaggerPackageNotes>
-        1. 修复相同path不同method的请求方法不能正确加载的问题
+          1. 优化Swagger文档生成：支持地址跳转，支持特定版本号高亮
         </GatewaySwaggerPackageNotes>
         <GatewaySwaggerUIPackageNotes>
-        1. 为HttpGateway 集成SwaggerUI
+          1. 优化Swagger文档生成：支持地址跳转，支持特定版本号高亮
         </GatewaySwaggerUIPackageNotes>
 	</PropertyGroup>
 </Project>

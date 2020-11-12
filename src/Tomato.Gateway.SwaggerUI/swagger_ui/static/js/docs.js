@@ -6,8 +6,9 @@ $.views.converters("getResponseModelName", function (val) {
 var tempBody = $.templates('#temp_body');
 var tempBodyRefModel = $.templates('#temp_body_ref_model');
 var tempBodyType = $.templates('#temp_body_type');
+var jsonData;
 
-
+var refMap = {};
 //获取context path
 var contextPath = getContextPath();
 
@@ -20,7 +21,7 @@ function getContextPath() {
 
 $(function () {
     $.ajax({
-        url: __SwaggerJsonPath__  || "/v2/swagger.json",
+        url:  "/v2/swagger.json",
         //url : "http://petstore.swagger.io/v2/swagger.json",
         dataType: "json",
         type: "get",
@@ -30,49 +31,10 @@ $(function () {
             layui.use(['layer', 'jquery', 'element'], function () {
                 var $ = layui.jquery, layer = layui.layer, element = layui.element;
             });
-            var jsonData = eval(data);
+            jsonData = eval(data);
 
             $("#title").html(jsonData.info.title);
             $("body").html($("#template").render(jsonData));
-
-            $("[name='a_path']").click(function () {
-                var path = $(this).attr("path");
-                var method = $(this).attr("method");
-                var operationId = $(this).attr("operationId");
-                $.each(jsonData.paths[path], function (i, d) {
-                    if (d.operationId == operationId) {
-                        d.path = path;
-                        d.method = method;
-                        $("#path-body").html(tempBody.render(d));
-
-                        //如果没有返回值，直接跳过
-                        if(!d.responses["200"].hasOwnProperty("schema")){
-                            // continue
-                            return true;
-                        }
-
-                        //基本类型
-                        if(d.responses["200"]["schema"].hasOwnProperty("type")){
-                            var model = {"type":d.responses["200"]["schema"]["type"]};
-                            $("#path-body-response-model").append(tempBodyType.render(model));
-                            // continue
-                            return true;
-                        }
-
-                        //引用类型
-                        var modelName = getRefName(d.responses["200"]["schema"]["$ref"]);
-                        if(d.parameters){
-                            $.each(d.parameters, function (i, p) {
-                                if (p["schema"]) {
-                                    var parameterModelName = getRefName(p["schema"]["$ref"]);
-                                    renderRefModel("path-body-request-model", jsonData, parameterModelName);
-                                }
-                            });
-                        }
-                        renderRefModel("path-body-response-model", jsonData, modelName);
-                    }
-                });
-            });
 
             //提交测试按钮
             $("[name='btn_submit']").click(function () {
@@ -84,11 +46,76 @@ $(function () {
                     parameterJson.push({k: v});
                 });
             });
+
+            handleRedirectLocation();
+        
         }
     });
 
 });
 
+// 获取 参数里的json 
+function handleRedirectLocation(){
+        var search   = $.getUrlParam('id');
+        if(search){
+            handleNav(search);
+        }
+}
+
+//处理左侧导航 
+//@param id 需要添加的 operationId 
+function handleNav(id){
+        var _this =  $("[operationId='"+ id+"']");
+        if(!_this){
+            return;
+        }
+        var path = $(_this).attr("path");
+        var method = $(_this).attr("method");
+        var operationId = $(_this).attr("operationId");
+        $.each(jsonData.paths[path], function (i, d) {
+            console.warn(d);
+            if (d.tags[0]+"_"+d.operationId == operationId) {
+                d.path = path;
+                d.method = method;
+                $("#path-body").html(tempBody.render(d));
+
+                //如果没有返回值，直接跳过
+                if(!d.responses["200"].hasOwnProperty("schema")){
+                    // continue
+                    return true;
+                }
+
+                //基本类型
+                if(d.responses["200"]["schema"].hasOwnProperty("type")){
+                    var model = {"type":d.responses["200"]["schema"]["type"]};
+                    $("#path-body-response-model").append(tempBodyType.render(model));
+                    // continue
+                    return true;
+                }
+
+                //引用类型
+                var modelName = getRefName(d.responses["200"]["schema"]["$ref"]);
+                if(d.parameters){
+                    $.each(d.parameters, function (i, p) {
+                        if (p["schema"]) {
+                            var parameterModelName = getRefName(p["schema"]["$ref"]);
+                            renderRefModel("path-body-request-model", jsonData, parameterModelName);
+                        }
+                    });
+                }
+                refMap = {};
+                renderRefModel("path-body-response-model", jsonData, modelName);
+                
+                $(_this).parent('dd').addClass("layui-this");
+
+                $(_this).parents('li').addClass("layui-nav-itemed");
+            
+                $("#admin-navbar-side").scrollTop(
+                    $(_this).offset().top-200
+                )
+            }
+        });
+}
 
 /**
  * 渲染ref类型参数
@@ -103,6 +130,11 @@ function renderRefModel(domId, jsonData, modelName) {
         if (!model) {
             return;
         }
+
+        if (refMap[modelName]) {
+            return;
+        }
+        refMap[modelName] = model;
         model.name = modelName;
         model.domId = domId;
         //修改有嵌套对象的type
@@ -315,3 +347,13 @@ function appendParameterToUrl(url, parameter) {
     });
     return url.substring(0, url.length - 1);
 }
+
+
+//jquery 扩展  获取当前页面地址的某个参数的值
+(function ($) {
+    $.getUrlParam = function (name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+})(jQuery);

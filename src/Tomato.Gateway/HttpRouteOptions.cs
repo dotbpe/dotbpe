@@ -6,7 +6,7 @@ namespace Tomato.Gateway
 {
     public class HttpRouteOptions
     {
-        public List<RouteItem> Items { get; } = new List<RouteItem>();    
+        public List<RouteItem> Items { get; } = new List<RouteItem>();
     }
 
     public class RouteItem
@@ -17,6 +17,7 @@ namespace Tomato.Gateway
 
         public RestfulVerb AcceptVerb { get; set; }
         public string Path { get; set; }
+        public string Version { get; set; } = "1.0.0";
 
         internal IHttpPlugin Plugin { get; set; }
         public MethodInfo InvokeMethod { get; set; }

@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace GreeterHttpService
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {

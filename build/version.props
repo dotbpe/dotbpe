@@ -7,8 +7,8 @@
 		<ExtraJsonNetPackageVersion>1.1.0</ExtraJsonNetPackageVersion>
 		<ExtraMessagePackPackageVersion>1.1.0</ExtraMessagePackPackageVersion>
 		<ExtraProtobufPackageVersion>1.1.0</ExtraProtobufPackageVersion>
-		<GatewayPackageVersion>2.1.0</GatewayPackageVersion>
-		<GatewaySwaggerPackageVersion>1.1.1</GatewaySwaggerPackageVersion>
-		<GatewaySwaggerUIPackageVersion>1.1.1</GatewaySwaggerUIPackageVersion>
+		<GatewayPackageVersion>2.1.1</GatewayPackageVersion>
+		<GatewaySwaggerPackageVersion>1.1.2</GatewaySwaggerPackageVersion>
+		<GatewaySwaggerUIPackageVersion>1.1.2</GatewaySwaggerUIPackageVersion>
 	</PropertyGroup>
 </Project>

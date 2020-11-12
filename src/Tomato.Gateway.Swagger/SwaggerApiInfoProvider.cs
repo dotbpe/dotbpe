@@ -73,7 +73,7 @@ namespace Tomato.Gateway.Swagger
                     //this._resolver.GetTypeComment(item.InvokeMethod.DeclaringType)
                     tagName
                 };
-
+                path.Version = item.Version;
                 path.Summary = GetSummary(item);
 
                 string verb;
@@ -191,7 +191,7 @@ namespace Tomato.Gateway.Swagger
                 {
                     Description = this._resolver.GetMemberInfoComment(p)
                 };
-            
+
                 if (p.PropertyType == typeof(string) || p.PropertyType.IsValueType)
                 {
                     pd.Type = GetSwaggerType(p.PropertyType);
@@ -300,7 +300,7 @@ namespace Tomato.Gateway.Swagger
                     });
                     CreateSwaggerDefinition(type.GenericTypeArguments[0].Name, type.GenericTypeArguments[0], definitions, config);
 
-                }               
+                }
                 else
                 {
                     arrayItem.Items.Add(new SwaggerSingleItemSchema

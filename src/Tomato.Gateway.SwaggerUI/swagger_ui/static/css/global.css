@@ -98,3 +98,7 @@
 
 .footer{line-height: 44px; text-align: center; background-color: #eee; color: #666; }
 .footer a{padding: 0 5px;}
+
+.last-version a cite{
+    color: red
+}

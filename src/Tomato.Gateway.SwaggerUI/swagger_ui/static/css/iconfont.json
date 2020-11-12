@@ -1,0 +1,30 @@
+{
+  "id": "2179902",
+  "name": "swagger",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "4228009",
+      "name": "new",
+      "font_class": "new",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "4347694",
+      "name": "API",
+      "font_class": "api-list",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "11587139",
+      "name": "api",
+      "font_class": "api",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    }
+  ]
+}

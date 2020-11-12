@@ -54,7 +54,7 @@ namespace GreeterHttpService
                 {
                     Title = "GreetingService",
                     Description = "测试Swagger",
-                    Version = "1.0"
+                    Version = "2.0.0"
                 };
 
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";

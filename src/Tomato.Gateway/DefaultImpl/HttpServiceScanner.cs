@@ -104,7 +104,7 @@ namespace Tomato.Gateway
                     if( "default".Equals(rAttr.Category, StringComparison.OrdinalIgnoreCase))
                     {
                         AddHttpServiceRouter(type, m, sAttr, mAttr, rAttr, options);
-                    }                    
+                    }
                 }
             }
         }
@@ -117,6 +117,7 @@ namespace Tomato.Gateway
                 Path = rAttr.Path,
                 AcceptVerb = rAttr.AcceptVerb,
                 Category = rAttr.Category,
+                Version = rAttr.Version,
                 InvokeMethod = m,
                 MessageId = mAttr.MessageId,
                 ServiceId = sAttr.ServiceId
